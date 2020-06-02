@@ -14,7 +14,7 @@ app.use(express.json());
 
 //routes
 
-app.use(require('./routes/archivos.routes'));
+app.use(require('./routes/user.routes'));
 
 //strating the server
 
