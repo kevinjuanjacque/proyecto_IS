@@ -1,1 +1,37 @@
-<p>usuarios works!</p>
+<nav class="black">
+    <div class="nav-wrapper black container">
+      <a href="#!" class="brand-logo">Logo</a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down nm-auto">
+        <form class="col s12" (ngSubmit)="iniciar()" >
+          <div class="row">
+            <div class="input-field col s5">
+                <input id="email" [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}" type="email" style="color: white" class="validate" required >
+                <label for="email">Email</label>
+            </div>
+            <div class="input-field col s4">
+                <input id="password" [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}" type="password" style="color: white" class="validate" required >
+                <label for="password">Password</label>
+            </div>
+            <div class="col s3">
+                <button class="btn waves-effect waves-light"  type="submit" name="action">Submit
+                  <i class="material-icons right">send</i>
+                </button>
+            </div>
+            
+          </div>
+          <li class="nav-item">
+          
+          </li>
+        </form>
+       
+        
+      </ul>
+    </div>
+  </nav>
+  <ul class="sidenav" id="mobile-demo">
+    <li><a href="sass.html">Sass</a></li>
+    <li><a href="badges.html">Components</a></li>
+    <li><a href="collapsible.html">Javascript</a></li>
+    <li><a href="mobile.html">Mobile</a></li>
+  </ul>
