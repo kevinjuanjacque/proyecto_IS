@@ -1,37 +1,44 @@
-<nav class="black">
-    <div class="nav-wrapper black container">
-      <a href="#!" class="brand-logo">Logo</a>
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      <ul class="right hide-on-med-and-down nm-auto">
-        <form class="col s12" (ngSubmit)="iniciar()" >
+<ul class="right hide-on-med-and-down nm-auto">
+      <ng-container *ngIf="!usuariosService.verificarLogin(); else salir" >
+        <form class="col s12" #userForm="ngForm" (ngSubmit)="iniciar(); userForm.reset()" >
           <div class="row">
             <div class="input-field col s5">
                 <input id="email" [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}" type="email" style="color: white" class="validate" required >
                 <label for="email">Email</label>
             </div>
-            <div class="input-field col s4">
+            <div class="input-field col s3">
                 <input id="password" [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}" type="password" style="color: white" class="validate" required >
                 <label for="password">Password</label>
             </div>
-            <div class="col s3">
-                <button class="btn waves-effect waves-light"  type="submit" name="action">Submit
-                  <i class="material-icons right">send</i>
-                </button>
+            <div class="col s4">
+                            
+                <button class="btn waves-effect indigo darken-4"  type="submit" name="action" >Iniciar Sesion</button>
+
             </div>
             
           </div>
-          <li class="nav-item">
           
-          </li>
         </form>
-       
-        
+      </ng-container>
       </ul>
-    </div>
-  </nav>
-  <ul class="sidenav" id="mobile-demo">
-    <li><a href="sass.html">Sass</a></li>
-    <li><a href="badges.html">Components</a></li>
-    <li><a href="collapsible.html">Javascript</a></li>
-    <li><a href="mobile.html">Mobile</a></li>
-  </ul>
+      <ng-template #salir>
+        
+      <ul class="right hide-on-med-and-down nm-auto">
+
+            <li class="nav-item">
+              
+              <a class="btn-floating pulse indigo darken-4" id=mos href="/cargar"><i class="material-icons" >cloud_upload</i></a>
+              
+            </li>
+    
+            <li class="nav-item">
+
+              <a onclick="M.toast({html: 'Nos vemos!'})" class="btn indigo darken-4" (click)="usuariosService.removerToken()">LogOut</a>
+              
+            </li>
+
+        </ul>
+        <a class="brand-logo center">{{"email"}}</a>
+      </ng-template>
+     
+  

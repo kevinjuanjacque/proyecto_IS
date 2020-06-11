@@ -1,6 +1,6 @@
 const mongoose= require('mongoose');
 
-const URI = 'mongodb://localhost/mean-crud'
+const URI = 'mongodb://localhost/repositorio'
 
 mongoose.connect(URI,{
     useNewUrlParser: true,

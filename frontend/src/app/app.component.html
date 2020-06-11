@@ -1,2 +1,25 @@
- 
-<app-usuarios></app-usuarios>
+<script>
+  function limpiarFormulario() {
+    document.getElementById("miForm").reset();
+  }
+</script>
+
+<nav class="black">
+    <div class="nav-wrapper black container">
+      <a href="#" class="btn-floating btn-large waves-effect grey darken-4"><i class="material-icons">home</i></a>
+
+   
+
+
+    <app-usuarios></app-usuarios>
+    
+      
+    </div>
+    
+  </nav>
+  <body blackground="https://www.ucentral.cl/ucentral/site/artic/20191216/imag/foto_0000000120191216144336/biblio.jpg">
+
+<div class="container col s5 center">
+    <router-outlet></router-outlet>
+</div>
+</body>

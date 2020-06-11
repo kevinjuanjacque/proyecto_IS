@@ -1,1 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+html {
+    background: url("https://www.ucentral.cl/ucentral/site/artic/20191216/imag/foto_0000000120191216144336/biblio.jpg");
+    background-size: 100% 200%;
+}

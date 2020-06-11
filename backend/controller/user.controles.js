@@ -2,22 +2,20 @@ const userControles={};
 
 //se importa los modelos de user
 const userModel= require('../models/user')
+const file= require('../models/archivo')
 const jwt=require('jsonwebtoken');
+const fs = require('fs');
 
-//Metodo get para obtener los usuarios
-userControles.get = async (req,res)=>{
-    const users = await userModel.find();
-
-    res.json(users);
-
-    
+//Metodo post obtener los usuarios
+userControles.obtenerUsuario = async (req,res)=>{
+    return res.json(await userModel.find());
 }
 
 //Metodo post para igresar usuarios
 userControles.createUser = async (req,res)=>{
-    const {email,password}=req.body;
-    const usuarioNuevo =new userModel({email,password});
-    const veri=await userModel.findOne({email})
+    const {nombreCompleto,email,password}=req.body;
+    const usuarioNuevo =new userModel({nombreCompleto,email,password});
+    const veri=await userModel.findOne({email});
     if(!veri){
         await usuarioNuevo.save();
         const token=jwt.sign({_id: usuarioNuevo._id}, 'secretKey');
@@ -34,8 +32,8 @@ userControles.sesion = async (req,res) =>{
     const { email, password}  = req.body;
     const usuario = await userModel.findOne({email});
     
-    if(!usuario){return res.status(401).json('Email no registrado');}
-    if(usuario.password == {password}) {return res.status(401).json('Password incorrecta');}
+    if(!usuario){return res.status(404).json({"razon": 'Email no registrado'});}
+    if(usuario.password != password) {return res.status(401).json({"razon":'Password incorrecta'});}
     const token = jwt.sign({_id: usuario._id}, 'secretkey');
     res.status(200).json(token);
 };
@@ -58,6 +56,24 @@ userControles.eliminar =  async (req,res) =>{
     await userModel.findByIdAndDelete(id);
     res.json('usuario eliminado con exito');
 }
+
+//agregar file
+
+userControles.subirArchivo= async (req, res) => {  
+    const {uploads} = req.files;
+    const {path,name,type} = (uploads[0]);
+    if(type!='application/pdf'){
+        fs.unlinkSync(path);
+        return res.status(403).json("Archivo no es pdf");
+    }
+    const usuario= await userModel.findById(req.verificacionID);
+    const email=usuario.email;
+    const archivoNew= new file({name,email,path});
+    console.log(archivoNew)
+    await archivoNew.save();
+    res.status(200).json("Archivo upload");
+}
+
 
 
 module.exports=userControles;

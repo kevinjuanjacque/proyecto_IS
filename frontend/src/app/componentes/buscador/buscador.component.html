@@ -1,0 +1,36 @@
+<div class="container">
+<div class="row">
+    <div class="col s12">
+      <div class="card  grey lighten-5">
+      <form action="/images/upload" method="post" enctype="multipart/formdata">
+    
+            <div class="card-content white-text">
+                <span class="card-title" style="color:black">BUSCADOR</span>
+                <img class="" width="300" src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Logo_nuevo_ucen.png">
+
+    <div class="conteiner row">
+        <div class="col s12">
+            <div class="row  ">
+                <div class="input-field  col s12">
+                    <i class="material-icons prefix">search</i>
+                    <input  type="text" id="autocomplete-input" (change)="fileChange($event)" name="image" class="autocomplete ">
+                    <label for="autocomplete-input">Que buscas?</label>
+                </div>
+                
+
+            </div>
+        </div>
+    </div>
+    
+
+
+            </div>
+            <div class="card-action">
+                 <button class="btn waves-effect waves-light indigo darken-4"   type="submit" name="action" >BUSCAR</button>
+
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>    

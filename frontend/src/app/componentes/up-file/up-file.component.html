@@ -1,0 +1,31 @@
+
+<div class="row">
+    <div class="col s12 ">
+      <div class="card  grey lighten-5">
+        <div class="card-content white-text">
+          <span class="card-title" style="color:#ef6c00">LLena los campos para subir archivo</span>
+            <div class="input-group">
+                  <div class="input-group-prepend">
+                      <span  class="input-group-text upload"  (click)="upload()"  id="btnUpload">Upload</span>
+                  </div>
+                  <div class="custom-file">
+                      <form action="/api/upload" method="post" enctype="multipart/form-data">
+                           <div class="file-field input-field">
+                                <div class="btn  indigo darken-4 col s5">
+                                    <span>Seleccionar Documento</span>
+                                    <input (change)="fileChange($event)"  type="file">
+                                </div>
+                                <div class="file-path-wrapper">
+                                    <input style="color:black;" class="file-path" type="text" placeholder="Archivo seleccionado">
+                                </div>
+                            </div>
+                      </form>
+                      <label  style="color:#ef6c00;" class="custom-file-label" for="inputGroupFile01">Subir archivo</label>
+                  </div>
+              </div>
+            <a class="btn-floating light-blue btn-large  indigo darken-4 pulse " (click)="upload()" ><i class=" material-icons">cloud_upload</i></a>
+          
+        </div>
+      </div>
+    </div>
+  </div>
