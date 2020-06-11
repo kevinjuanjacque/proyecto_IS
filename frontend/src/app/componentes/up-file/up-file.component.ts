@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+
 import { UsuariosService } from '../../services/usuarios.service';
+
 
 import {Router} from '@angular/router';
 
+
+
+declare var M: any;
 @Component({
   selector: 'app-up-file',
   templateUrl: './up-file.component.html',
@@ -32,8 +37,9 @@ export class UpFileComponent implements OnInit {
       console.log('response received is ', res)
     },
     err=>{
-      if(err.status==403){ M.toast({html: 'Recuerda que solo se aceptan archivos en formato .pdf'})}
-    });
+        M.toast({html: 'Recuerda que solo se aceptan archivos en formato pdf'})
+      }
+      );
     }
 
 }
